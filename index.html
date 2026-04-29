@@ -11,6 +11,7 @@
       --blu: #2d3978;
       --rosa-antico: #c6866e;
       --acquamarino: #79adac;
+      --light-yellow: #eeeecf;
     }
     body {
       margin: 0;
@@ -21,16 +22,32 @@
       flex-direction: column;
       align-items: center;
       justify-content: center;
-      min-height: 100vh;
       text-align: center;
       color: var(--blu);
     }
     .menu {
-      background-color: var(--rosa-antico);
+      width: 100%;
+      color: var(--light-yellow);
+      .romano {
+        background-color: var(--rosa-antico);
+        padding-top: 1rem;
+        .tab {
+          background-color: var(--rosa-antico);
+        }
+      }
+      .iberico {
+        display: none;
+        background-color: var(--acquamarino);
+        padding-top: 1rem;
+        .tab {
+          background-color: var(--acquamarino);
+        }
+      }
     }
     .hours {
-
+      width: 100%;
     }
+    
     img.logo {
       max-width: 30%;
       height: auto;
@@ -39,9 +56,9 @@
       font-size: 2rem;
       margin-top: 1.5rem;
     }
-    h1 {
+    h2 {
       font-size: 1.5rem;
-      margin-top: 1rem;
+      margin-top: 0;
     }
     .contacts {
       margin-top: 2rem;
@@ -56,12 +73,208 @@
       color: #333;
       padding-bottom: 2rem;
     }
+    /* Style the tab */
+    .tab {
+      overflow: hidden;
+      border: 1px solid #ccc;
+      display: flex;
+      justify-content: space-evenly;
+    }
+
+    /* Style the buttons inside the tab */
+    .tab button {
+      background-color: inherit;
+      border: none;
+      outline: none;
+      cursor: pointer;
+      transition: 0.3s;
+      color: var(--light-yellow);
+      font-size: 1rem;
+    }
+
+    /* Change background color of buttons on hover */
+    .tab button:hover {
+      color: white;
+    }
+
+    /* Create an active/current tablink class */
+    .tab button.active {
+      opacity: 50%;
+    }
+
+    /* Style the tab content */
+    .tabcontent, .tabcontentI {
+      display: none;
+      padding: 6px 12px;
+      border: 1px solid #ccc;
+      border-top: none;
+      font-family: "Noticia Text", serif;
+    }
+    .leggenda, .coperto {
+      padding: 1rem;
+      font-size: small;
+      border: 1px solid #ccc;
+    }
   </style>
   <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@400;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Noticia+Text:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
 </head>
 <body>
-  <img src="assets/images/logo.png" alt=" Feudo - Piatti seri, gente allegra" class="logo">
-  <h1>Stiamo preparando il nuovo sito,<br> a presto!</h1>
+  <h1><img src="assets/images/logo.png" alt="El Feudo - Piatti seri, gente allegra" class="logo"></h1>
+  <article class="menu">
+    <section class="romano">
+      <h2>Menu romano</h2>
+      <!-- Tab links -->
+      <div class="tab">
+        <button class="tablinks" onclick="openMenu(event, 'Antipasti')" id="romanOpen">Antipasti</button>
+        <button class="tablinks" onclick="openMenu(event, 'Primi')">Primi</button>
+        <button class="tablinks" onclick="openMenu(event, 'Secondi')">Secondi</button>
+        <button class="tablinks" onclick="openMenu(event, 'Contorni')">Contorni</button>
+        <button class="tablinks" onclick="openMenu(event, 'Dolci')">Dolci</button>
+        <button class="tablinks" onclick="openMenu(event, 'Bevande')">Bevande</button>
+      </div>
+      <!-- Tab content -->
+      <div id="Antipasti" class="tabcontent">
+        <h3>Antipasti</h3>
+        <p>Prosciutto - 6€<br>
+          Prosciutto crudo tagliato al coltello<br>
+          Allergeni:- -</p>
+          <p>Concia di zucchine - 6€<br>
+          Zucchine fritte e marinate su bruschetta<br>
+          Allergeni: 1, 5</p>
+          <p>Pecorino - 6€<br>
+          Pecorino a fette<br>
+          Allergeni: 7</p>
+          <p>Carciofi alla romana - 4€ cad<br>
+          Carciofi stufati<br>
+          Allergeni:- -</p>
+          <p>Carciofi alla giudìa - 4€ cad<br>
+          Carciofi fritti a fiore<br>
+          Allergeni: 5</p>
+          <p>Antipasto Er Feudo - 16€<br>
+          Prosciutto, pecorino, verdure grigliate, carciofi<br>
+          Allergeni: 5, 7</p>
+      </div>
+
+      <div id="Primi" class="tabcontent">
+        <h3>Primi</h3>
+        <p>Amatriciana - 11€<br>
+          Sugo di pomomdoro, guanciale, pepe e pecorino romano DOP<br>
+          Allergeni: 3, 7</p>
+          <p>Gricia - 11€<br>
+          Guanciale, pepe e pecorino romano DOP<br>
+          Allergeni: 3, 7</p>
+          <p>Cacio e pepe - 11€<br>
+          Crema di pepe e pecorino romano DOP<br>
+          Allergeni: 3, 7</p>
+          <p>Carbonara - 11€<br>
+          Crema di uova e pecorino romano DOP, pepe e guanciale<br>
+          Allergeni: 3, 7</p>
+      </div>
+
+      <div id="Secondi" class="tabcontent">
+        <h3>Secondi</h3>
+        <p>Saltimbocca alla romana - 14€<br>
+          Fettine di vitello, prosciutto crudo e salvia, 
+          saltati in burro e vino bianco<br>
+          Allergeni: 1, 7</p>
+          <p>Coda alla vaccinara - 14€<br>
+          Coda di manzo brasato nel vino rosso 
+          con pinoli e uvetta<br>
+          Allergeni: 8, 9</p>
+          <p>Polpette alla romana - 13€<br>
+          Polpette di manzo, vitello e maiale 
+          in sugo di pomodoro<br>
+          Allergeni: 1, 3, 9</p>
+          <p>Brasato - 15€<br>
+          Manzo brasato al pomodoro e vino rosso<br>
+          Allergeni: 9</p>
+          <p>Ossobuco alla Romana - 15€<br>
+          Ossobuco di vitello<br>
+          Allergeni: 1, 9</p>
+      </div>
+
+      <div id="Contorni" class="tabcontent">
+        <h3>Contorni</h3>
+        <p>Cicoria ripassata- 5€<br>
+          Cicoria fine, saltata in olio EVO, aglio 
+          e peperoncino<br>
+          Allergeni: - -</p>
+          <p>Verdure gratinate o grigliate - 6€<br>
+          Melanzane, zucchine, peperoni, cipolle rosse di Cannara e patate<br>
+          Allergeni (solo verdure gratinate): 1, 7</p>
+          <p>Carciofi alla romana - 4€ cad<br>
+          Carciofi stufati con olio, aglio e menta<br>
+          Allergeni: - -</p>
+          <p>Carciofi alla giudìa - 4€ cad<br>
+          Carciofi fritti a fiore in olio d’arachidi<br>
+          Allergeni: 5</p>
+      </div>
+
+      <div id="Dolci" class="tabcontent">
+        <h3>Dolci</h3>
+        <p>Tiramisù - 5€<br>
+          Allergeni: 1, 3, 7</p>
+          <p>Crema Catalana - 6€<br>
+          Allergeni: 3, 7</p>
+          <p>Torta al cioccolato - 4€<br>
+          Allergeni: 1, 3, 6, 7, 5*, 8*, 12*, 10*</p>
+          <p>Torta ai frutti di bosco - 4€<br>
+          Allergeni: 1, 3, 7, 5*, 8*, 12*, 10*</p>
+      </div>
+
+      <div id="Bevande" class="tabcontent">
+        <h3>Bevande</h3>
+        <p>Acqua - 2,50€<br>
+          Panna, San Pellegrino 75cl</p>
+          <p>Vino rosso e bianco della casa
+          0,25L: 3€ | 0,5L: 5€ | 1L: 9€</p>
+          <p>Vino rosato della casa
+          0,25L: 3,50€ | 0,5L: 6€ | 1L: 11€</p>
+          <p>Caffè - 2€
+          Amari - 3€</p>
+      </div>
+      
+      <div class="coperto"><p>Coperto - 3€<br>I piatti del Feudo sono disegnati e dipinti a mano dal laboratorio artistico inclusivo TerrArte di Città della Pieve. Scegliendo El Feudo contribuisci attivamente a sostenere questo progetto.</p></div>
+      <div class="leggenda"><p>Legenda Allergeni: 1 Glutine - 2 Crostacei - 3 Uova - 4 Pesce - 5 Arachidi - 6 Soia - 7 Latte - 8 Frutta a guscio - 9 Sedano - 10 Senape - 11 Sesamo - 12 Solfiti - 13 Lupini -  14 Molluschi (* = possibili tracce)</p></div>
+    
+    </section>
+    <section class="iberico">
+      <h2>Menu iberico - Paella e tapas</h2>
+      <div class="tab">
+        <button class="tablinksI" onclick="openIberic(event, 'Tapas')" id="ibericOpen">Tapas</button>
+        <button class="tablinksI" onclick="openIberic(event, 'Paella')">Paella</button>
+        <button class="tablinksI" onclick="openIberic(event, 'MenuEspecial')">Menu especial</button>
+        <button class="tablinksI" onclick="openIberic(event, 'Postres')">Postres</button>
+        <button class="tablinksI" onclick="openIberic(event, 'Bebidas')">Bebidas</button>
+      </div>
+      <!-- Tab content -->
+      <div id="Tapas" class="tabcontentI">
+        <h3>Tapas</h3>
+        <p>London is the capital city of England.</p>
+      </div>
+
+      <div id="Paella" class="tabcontentI">
+        <h3>Paella</h3>
+        <p>Paris is the capital of France.</p>
+      </div>
+
+      <div id="MenuEspecial" class="tabcontentI">
+        <h3>Menu especial</h3>
+        <p>Tokyo is the capital of Japan.</p>
+      </div>
+
+      <div id="Postres" class="tabcontentI">
+        <h3>Postres</h3>
+        <p>Tokyo is the capital of Japan.</p>
+      </div>
+
+      <div id="Bebidas" class="tabcontentI">
+        <h3>Bebidas</h3>
+        <p>Tokyo is the capital of Japan.</p>
+      </div>
+    </section>
+  </article>
   <div class="contacts">
     <p>📍 Via XI Settembre, 26 - Cittä di Castello</p>
     <p>📞 351 60 48 486</p>
@@ -70,5 +283,38 @@
   </div>
 
   <footer>© El Feudo - Tutti i diritti riservati</footer>
+  <script>
+  function openMenu(evt, rName) {
+    var i, tabcontent, tablinks;
+    tabcontent = document.getElementsByClassName("tabcontent");
+    for (i = 0; i < tabcontent.length; i++) {
+      tabcontent[i].style.display = "none";
+    }
+    tablinks = document.getElementsByClassName("tablinks");
+    for (i = 0; i < tablinks.length; i++) {
+      tablinks[i].className = tablinks[i].className.replace(" active", "");
+    }
+    document.getElementById(rName).style.display = "block";
+    evt.currentTarget.className += " active";
+  }
+  function openIberic(evt, iName) {
+    var j, tabcontentI, tablinksI;
+    tabcontentI = document.getElementsByClassName("tabcontentI");
+    for (j = 0; j < tabcontentI.length; j++) {
+      tabcontentI[j].style.display = "none";
+    }
+    tablinksI = document.getElementsByClassName("tablinksI");
+    for (j = 0; j < tablinksI.length; j++) {
+      tablinksI[j].className = tablinksI[j].className.replace(" active", "");
+    }
+    document.getElementById(iName).style.display = "block";
+    evt.currentTarget.className += " active";
+  }
+  </script>
+  <script>
+    document.getElementById("romanOpen").click();
+    document.getElementById("ibericOpen").click();
+</script>
+
 </body>
 </html>
